@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HireTrue — Get Hired on Merit, Not Luck</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Clash+Display:wght@600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0A1628;
+  --navy-mid:#152236;
+  --blue:#1B4FD8;
+  --blue-light:#3B72F6;
+  --blue-pale:#EEF3FF;
+  --orange:#F5620F;
+  --orange-light:#FF8A50;
+  --orange-pale:#FFF1EB;
+  --slate:#64748B;
+  --slate-light:#94A3B8;
+  --border:#E2E8F0;
+  --white:#FFFFFF;
+  --off-white:#F8FAFC;
+  --success:#16A34A;
+  --success-pale:#F0FDF4;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--navy);background:var(--white);line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  height:68px;padding:0 6%;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  z-index:200;
+}
+.logo{
+  font-family:'Sora',sans-serif;
+  font-size:24px;font-weight:800;
+  color:var(--navy);letter-spacing:-0.5px;
+  text-decoration:none;
+}
+.logo em{color:var(--orange);font-style:normal}
+.nav-links{display:flex;align-items:center;gap:36px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--slate);font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--navy)}
+.nav-btn{
+  background:var(--orange);color:var(--white) !important;
+  padding:9px 22px;border-radius:8px;
+  font-weight:600 !important;font-size:14px !important;
+  transition:background .2s, transform .2s !important;
+}
+.nav-btn:hover{background:#D94E08 !important;transform:translateY(-1px) !important}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  padding:110px 6% 80px;
+  display:flex;align-items:center;
+  background:var(--white);
+  position:relative;overflow:hidden;
+}
+.hero-bg-ring{
+  position:absolute;
+  top:-200px;right:-200px;
+  width:700px;height:700px;
+  border-radius:50%;
+  border:1px solid #E8EEFF;
+  pointer-events:none;
+}
+.hero-bg-ring2{
+  position:absolute;
+  top:-100px;right:-100px;
+  width:500px;height:500px;
+  border-radius:50%;
+  border:1px solid #EEF1FF;
+  pointer-events:none;
+}
+.hero-inner{
+  max-width:1160px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1.05fr 0.95fr;gap:72px;align-items:center;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--orange-pale);
+  color:var(--orange);
+  font-size:13px;font-weight:600;
+  padding:6px 16px;border-radius:100px;
+  border:1px solid #FFD4C2;
+  margin-bottom:24px;
+}
+.eyebrow-dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+h1{
+  font-family:'Sora',sans-serif;
+  font-size:56px;font-weight:800;
+  line-height:1.08;letter-spacing:-2px;
+  color:var(--navy);margin-bottom:22px;
+}
+h1 .accent{
+  color:var(--orange);
+  position:relative;display:inline-block;
+}
+h1 .accent::after{
+  content:'';
+  position:absolute;bottom:-4px;left:0;right:0;
+  height:3px;background:var(--orange);border-radius:2px;opacity:.35;
+}
+.hero-desc{
+  font-size:18px;color:var(--slate);line-height:1.75;
+  max-width:500px;margin-bottom:40px;
+}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn-primary{
+  background:var(--navy);color:var(--white);
+  padding:15px 32px;border-radius:10px;
+  font-size:16px;font-weight:600;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:all .2s;display:inline-flex;align-items:center;gap:8px;
+  font-family:'Inter',sans-serif;
+}
+.btn-primary:hover{background:#0D1F38;transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,22,40,.18)}
+.btn-ghost{
+  background:transparent;color:var(--navy);
+  padding:15px 28px;border-radius:10px;
+  font-size:16px;font-weight:600;
+  text-decoration:none;border:1.5px solid var(--border);
+  cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:8px;
+  font-family:'Inter',sans-serif;
+}
+.btn-ghost:hover{border-color:var(--blue-light);color:var(--blue);background:var(--blue-pale)}
+.trust-row{
+  display:flex;gap:28px;margin-top:44px;padding-top:44px;
+  border-top:1px solid var(--border);
+}
+.trust-item{}
+.trust-num{
+  font-family:'Sora',sans-serif;
+  font-size:30px;font-weight:800;color:var(--navy);
+  display:block;letter-spacing:-1px;
+}
+.trust-label{font-size:13px;color:var(--slate-light)}
+
+/* hero visual */
+.hero-visual{position:relative}
+.hv-card{
+  background:var(--white);
+  border-radius:20px;
+  border:1px solid var(--border);
+  box-shadow:0 24px 64px rgba(10,22,40,.1), 0 4px 16px rgba(10,22,40,.05);
+  overflow:hidden;
+}
+.hv-card-top{
+  background:var(--navy);
+  padding:20px 24px 18px;
+}
+.hv-title{color:rgba(255,255,255,.55);font-size:12px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px}
+.hv-score-row{display:flex;align-items:center;justify-content:space-between}
+.hv-score-label{color:var(--white);font-family:'Sora',sans-serif;font-size:15px;font-weight:700}
+.hv-score-num{
+  font-family:'Sora',sans-serif;font-size:40px;font-weight:800;
+  color:var(--white);letter-spacing:-2px;
+}
+.hv-score-num span{font-size:18px;opacity:.5;font-weight:400}
+.hv-progress-label{color:rgba(255,255,255,.5);font-size:12px;margin-top:10px;margin-bottom:6px}
+.hv-bar{height:5px;background:rgba(255,255,255,.12);border-radius:100px;overflow:hidden}
+.hv-fill{height:100%;border-radius:100px;background:var(--orange-light)}
+.hv-body{padding:20px 24px}
+.skill-item{margin-bottom:14px}
+.skill-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.skill-name{font-size:13px;color:var(--slate);font-weight:500}
+.skill-pct{font-size:13px;font-weight:600}
+.skill-bar{height:5px;background:var(--border);border-radius:100px;overflow:hidden}
+.skill-bar-fill{height:100%;border-radius:100px}
+.s-blue{background:var(--blue-light)}
+.s-orange{background:var(--orange)}
+.s-green{background:#22C55E}
+.s-slate{background:#94A3B8}
+.pct-blue{color:var(--blue)}
+.pct-orange{color:var(--orange)}
+.pct-green{color:var(--success)}
+.pct-slate{color:var(--slate)}
+.hv-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding-top:16px;border-top:1px solid var(--border)}
+.chip{font-size:12px;font-weight:500;padding:5px 12px;border-radius:100px}
+.chip-blue{background:var(--blue-pale);color:var(--blue)}
+.chip-orange{background:var(--orange-pale);color:var(--orange)}
+.chip-green{background:var(--success-pale);color:var(--success)}
+
+.pill-float{
+  position:absolute;
+  background:var(--white);border-radius:12px;
+  padding:10px 16px;
+  box-shadow:0 8px 28px rgba(10,22,40,.12);
+  border:1px solid var(--border);
+  font-size:13px;font-weight:500;
+  display:flex;align-items:center;gap:8px;
+  white-space:nowrap;
+}
+.pill-float.tl{top:-18px;left:-24px}
+.pill-float.br{bottom:-18px;right:-24px}
+.pill-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.pd-green{background:#22C55E}
+.pd-orange{background:var(--orange)}
+
+/* ── PROBLEM ── */
+.problem{background:var(--navy);padding:96px 6%;color:var(--white)}
+.section-wrap{max-width:1160px;margin:0 auto}
+.sec-eyebrow{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--orange-light);margin-bottom:14px}
+.sec-title{
+  font-family:'Sora',sans-serif;
+  font-size:40px;font-weight:800;
+  line-height:1.15;letter-spacing:-1px;
+  margin-bottom:14px;
+}
+.sec-sub{font-size:17px;line-height:1.75;opacity:.6;max-width:520px;margin-bottom:56px}
+.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.prob-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;padding:32px 28px;
+  transition:background .25s;
+}
+.prob-card:hover{background:rgba(255,255,255,.08)}
+.prob-icon{font-size:28px;margin-bottom:18px}
+.prob-card h3{font-size:17px;font-weight:700;margin-bottom:10px;color:var(--white)}
+.prob-card p{font-size:14px;line-height:1.65;opacity:.55}
+
+/* ── FEATURES ── */
+.features{padding:100px 6%;background:var(--off-white)}
+.feat-header{text-align:center;margin-bottom:72px}
+.feat-header .sec-title{color:var(--navy)}
+.feat-header .sec-sub{margin:0 auto;opacity:1;color:var(--slate)}
+.feat-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  max-width:1160px;margin:0 auto;
+}
+.feat-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:20px;padding:32px 28px;
+  transition:all .3s;
+  position:relative;overflow:hidden;
+}
+.feat-card::after{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:3px;
+  background:var(--blue-light);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .3s;
+}
+.feat-card:hover{transform:translateY(-5px);box-shadow:0 20px 48px rgba(10,22,40,.09)}
+.feat-card:hover::after{transform:scaleX(1)}
+.feat-icon{
+  width:50px;height:50px;border-radius:14px;
+  background:var(--blue-pale);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;margin-bottom:20px;
+}
+.feat-card h3{font-family:'Sora',sans-serif;font-size:18px;font-weight:700;color:var(--navy);margin-bottom:10px}
+.feat-card p{font-size:14px;color:var(--slate);line-height:1.7}
+.feat-badge{
+  display:inline-block;margin-top:16px;
+  font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+  color:var(--orange);background:var(--orange-pale);
+  padding:4px 12px;border-radius:100px;
+}
+
+/* ── HOW IT WORKS ── */
+.how{padding:100px 6%;background:var(--white)}
+.how-header{text-align:center;margin-bottom:72px}
+.how-header .sec-title{color:var(--navy)}
+.journey{
+  max-width:900px;margin:0 auto;
+  display:flex;flex-direction:column;gap:0;
+}
+.journey-step{
+  display:grid;grid-template-columns:80px 1fr;gap:32px;
+  padding:32px 0;
+  border-bottom:1px solid var(--border);
+  align-items:flex-start;
+}
+.journey-step:last-child{border-bottom:none}
+.j-num{
+  width:52px;height:52px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Sora',sans-serif;font-size:20px;font-weight:800;
+  flex-shrink:0;
+}
+.jn1{background:var(--blue-pale);color:var(--blue)}
+.jn2{background:var(--orange-pale);color:var(--orange)}
+.jn3{background:var(--success-pale);color:var(--success)}
+.jn4{background:#F3F0FF;color:#7C3AED}
+.j-content h3{font-family:'Sora',sans-serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.j-content p{font-size:15px;color:var(--slate);line-height:1.7}
+.j-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.j-tag{font-size:12px;font-weight:500;padding:4px 12px;border-radius:100px;background:var(--off-white);color:var(--slate);border:1px solid var(--border)}
+
+/* ── COMPARISON ── */
+.compare{padding:100px 6%;background:var(--off-white)}
+.compare-header{text-align:center;margin-bottom:64px}
+.compare-header .sec-title{color:var(--navy)}
+.compare-table{
+  max-width:900px;margin:0 auto;
+  border-radius:20px;overflow:hidden;
+  border:1px solid var(--border);
+}
+.ct-head{
+  display:grid;grid-template-columns:2fr 1fr 1fr;
+  background:var(--navy);
+  padding:18px 28px;
+  color:var(--white);
+}
+.ct-head-cell{font-size:14px;font-weight:600;text-align:center}
+.ct-head-cell:first-child{text-align:left;opacity:.6}
+.ct-head-hiretrue{color:var(--orange-light)}
+.ct-row{
+  display:grid;grid-template-columns:2fr 1fr 1fr;
+  padding:16px 28px;
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+  align-items:center;
+}
+.ct-row:last-child{border-bottom:none}
+.ct-row:nth-child(even){background:var(--off-white)}
+.ct-feature{font-size:14px;color:var(--slate);font-weight:500}
+.ct-cell{text-align:center;font-size:18px}
+.ct-yes{color:var(--success)}
+.ct-no{color:#CBD5E1}
+.ct-partial{color:var(--orange);font-size:13px;font-weight:600}
+
+/* ── TESTIMONIALS ── */
+.testimonials{padding:100px 6%;background:var(--white)}
+.test-header{text-align:center;margin-bottom:64px}
+.test-header .sec-title{color:var(--navy)}
+.test-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;max-width:1160px;margin:0 auto;
+}
+.test-card{
+  border:1px solid var(--border);border-radius:20px;
+  padding:28px;transition:all .25s;
+}
+.test-card:hover{box-shadow:0 12px 32px rgba(10,22,40,.07);transform:translateY(-3px)}
+.stars{color:var(--orange);font-size:16px;letter-spacing:3px;margin-bottom:14px}
+.test-quote{font-size:15px;color:var(--slate);line-height:1.75;margin-bottom:20px;font-style:italic}
+.test-author{display:flex;align-items:center;gap:12px}
+.test-avatar{
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:14px;flex-shrink:0;
+}
+.test-name{font-size:14px;font-weight:600;color:var(--navy)}
+.test-role{font-size:12px;color:var(--slate-light)}
+
+/* ── CTA ── */
+.cta{
+  background:var(--navy);padding:100px 6%;text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-glow{
+  position:absolute;bottom:-120px;left:50%;transform:translateX(-50%);
+  width:600px;height:300px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(245,98,15,.15) 0%,transparent 70%);
+  pointer-events:none;
+}
+.cta .sec-title{color:var(--white);font-size:46px;margin-bottom:16px}
+.cta .sec-sub{color:rgba(255,255,255,.6);margin:0 auto 44px;opacity:1}
+.cta-form{
+  display:flex;gap:12px;max-width:500px;
+  margin:0 auto;
+}
+.cta-input{
+  flex:1;padding:15px 18px;
+  border-radius:10px;
+  border:1.5px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.08);
+  color:var(--white);font-size:15px;outline:none;
+  font-family:'Inter',sans-serif;
+  transition:border-color .2s;
+}
+.cta-input::placeholder{color:rgba(255,255,255,.4)}
+.cta-input:focus{border-color:rgba(255,255,255,.4)}
+.btn-orange{
+  background:var(--orange);color:var(--white);
+  padding:15px 26px;border-radius:10px;
+  font-size:15px;font-weight:700;
+  border:none;cursor:pointer;
+  transition:all .2s;white-space:nowrap;
+  font-family:'Inter',sans-serif;
+}
+.btn-orange:hover{background:#D94E08;transform:translateY(-2px)}
+.cta-note{font-size:13px;color:rgba(255,255,255,.35);margin-top:16px}
+
+/* ── FOOTER ── */
+footer{background:#060F1C;padding:56px 6% 36px}
+.footer-inner{max-width:1160px;margin:0 auto}
+.footer-top{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:48px;margin-bottom:48px;
+  padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.07);
+}
+.footer-brand .logo{display:block;margin-bottom:14px}
+.footer-brand p{font-size:14px;color:rgba(255,255,255,.4);line-height:1.7;max-width:240px}
+.footer-col h4{font-size:13px;font-weight:600;color:rgba(255,255,255,.5);letter-spacing:.5px;text-transform:uppercase;margin-bottom:16px}
+.footer-col a{display:block;font-size:14px;color:rgba(255,255,255,.4);text-decoration:none;margin-bottom:10px;transition:color .2s}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:13px;color:rgba(255,255,255,.25)}
+.footer-legal{display:flex;gap:24px}
+.footer-legal a{font-size:13px;color:rgba(255,255,255,.25);text-decoration:none;transition:color .2s}
+.footer-legal a:hover{color:rgba(255,255,255,.5)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  h1{font-size:38px}
+  .prob-grid{grid-template-columns:1fr}
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .test-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .sec-title{font-size:30px}
+  .cta .sec-title{font-size:32px}
+  .cta-form{flex-direction:column}
+}
+@media(max-width:600px){
+  .feat-grid{grid-template-columns:1fr}
+  h1{font-size:32px}
+  .trust-row{flex-wrap:wrap;gap:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">Hire<em>True</em></a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#compare">Why HireTrue</a></li>
+    <li><a href="#cta">For companies</a></li>
+    <li><a href="#cta" class="nav-btn">Get early access</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-ring"></div>
+  <div class="hero-bg-ring2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        Now in beta — join 2,400+ job seekers
+      </div>
+      <h1>The job exists.<br>You just need to<br><span class="accent">reach it truly.</span></h1>
+      <p class="hero-desc">
+        HireTrue finds the real gap between you and your next job — then closes it. No more blind applying, no more silence. Just clarity, direction, and the right company at the right time.
+      </p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn-primary">Start for free &rarr;</a>
+        <a href="#how" class="btn-ghost">&#9654;&nbsp; See how it works</a>
+      </div>
+      <div class="trust-row">
+        <div class="trust-item">
+          <span class="trust-num">87%</span>
+          <span class="trust-label">get interviews within 3 weeks</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-num">3.2x</span>
+          <span class="trust-label">faster time to offer</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-num">Free</span>
+          <span class="trust-label">always free to start</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="pill-float tl">
+        <span class="pill-dot pd-green"></span>
+        4 companies matched you today
+      </div>
+      <div class="hv-card">
+        <div class="hv-card-top">
+          <div class="hv-title">Career Health Score</div>
+          <div class="hv-score-row">
+            <div class="hv-score-label">Rahul Verma &mdash; Product role</div>
+            <div class="hv-score-num">76<span>/100</span></div>
+          </div>
+          <div class="hv-progress-label">Overall readiness</div>
+          <div class="hv-bar"><div class="hv-fill" style="width:76%"></div></div>
+        </div>
+        <div class="hv-body">
+          <div class="skill-item">
+            <div class="skill-top">
+              <span class="skill-name">Resume strength</span>
+              <span class="skill-pct pct-blue">83%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-bar-fill s-blue" style="width:83%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-top">
+              <span class="skill-name">Skill market fit</span>
+              <span class="skill-pct pct-orange">61%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-bar-fill s-orange" style="width:61%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-top">
+              <span class="skill-name">Company match rate</span>
+              <span class="skill-pct pct-green">94%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-bar-fill s-green" style="width:94%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-top">
+              <span class="skill-name">Interview readiness</span>
+              <span class="skill-pct pct-slate">55%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-bar-fill s-slate" style="width:55%"></div></div>
+          </div>
+          <div class="hv-chips">
+            <span class="chip chip-blue">Product Management</span>
+            <span class="chip chip-orange">Add SQL &uarr;</span>
+            <span class="chip chip-green">11 companies hiring</span>
+          </div>
+        </div>
+      </div>
+      <div class="pill-float br">
+        <span class="pill-dot pd-orange"></span>
+        Resume gap found &mdash; fix in 2 mins
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="section-wrap">
+    <p class="sec-eyebrow">The real problem</p>
+    <h2 class="sec-title">Jobs exist. You just never<br>reach the right one.</h2>
+    <p class="sec-sub">It's not a shortage of jobs — it's a mismatch. The right candidate and the right company are out there, but a broken system keeps them apart.</p>
+    <div class="prob-grid">
+      <div class="prob-card">
+        <div class="prob-icon">📤</div>
+        <h3>100 applications, zero replies</h3>
+        <p>You apply to everything and hear nothing. No feedback, no reason, no direction. You keep doing the same thing and getting the same result.</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">🤖</div>
+        <h3>ATS filters you before humans see you</h3>
+        <p>Most resumes never reach a recruiter. Automated systems discard your application in seconds based on keywords you didn't know to include.</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">🎯</div>
+        <h3>You're applying to the wrong companies</h3>
+        <p>You apply to roles you're not ready for, at companies not hiring your skills — and never know why it isn't working.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="feat-header">
+    <p class="sec-eyebrow" style="color:var(--orange)">What HireTrue does</p>
+    <h2 class="sec-title">Not a job board. A career engine.</h2>
+    <p class="sec-sub" style="max-width:520px;font-size:17px;line-height:1.75">Every tool you need to go from confused and rejected — to clear, prepared, and hired.</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon">🧠</div>
+      <h3>Career Health Score</h3>
+      <p>Get an honest score of where you stand — skills, resume quality, market relevance — explained in plain language, not jargon.</p>
+      <span class="feat-badge">Clarity first</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📄</div>
+      <h3>AI Resume Builder</h3>
+      <p>Build a resume that gets past ATS and impresses humans. Role-specific, keyword-optimised, and genuinely yours — no fake filler.</p>
+      <span class="feat-badge">Gets you shortlisted</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🎯</div>
+      <h3>Precision Apply</h3>
+      <p>Only see companies actively hiring your exact skills. Every application you send has a real chance — no more shooting in the dark.</p>
+      <span class="feat-badge">No more blind applying</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📊</div>
+      <h3>Rejection Insights</h3>
+      <p>Every rejection comes with a reason. Know exactly what held you back, what to fix, and what to learn before your next application.</p>
+      <span class="feat-badge">Learn from every no</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🛤️</div>
+      <h3>Skill Roadmap</h3>
+      <p>See the exact skills the market wants right now, how big your gap is, and a week-by-week plan to close it — with curated resources.</p>
+      <span class="feat-badge">Direction + action</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🏆</div>
+      <h3>Dream Company Mode</h3>
+      <p>Target Google, Flipkart, or any specific company. Get a months-long personalised prep plan — skills, resume, culture, mock interviews.</p>
+      <span class="feat-badge">Your dream, our plan</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="how-header">
+    <p class="sec-eyebrow" style="color:var(--orange)">How it works</p>
+    <h2 class="sec-title" style="color:var(--navy)">From lost to hired in four steps</h2>
+  </div>
+  <div class="journey">
+    <div class="journey-step">
+      <div class="j-num jn1">1</div>
+      <div class="j-content">
+        <h3>Evaluate yourself honestly</h3>
+        <p>Answer a short set of questions about your skills, experience, and goals. HireTrue analyses your profile against live market data and gives you a Career Health Score — honest, specific, and actionable.</p>
+        <div class="j-tags">
+          <span class="j-tag">5 minutes</span>
+          <span class="j-tag">No resume needed to start</span>
+          <span class="j-tag">Instant score</span>
+        </div>
+      </div>
+    </div>
+    <div class="journey-step">
+      <div class="j-num jn2">2</div>
+      <div class="j-content">
+        <h3>Get your personal roadmap</h3>
+        <p>See what's missing, what to fix, and which companies are a real match for you today. Your AI-built resume is ready. Your skill gaps are named. You know exactly what to do next.</p>
+        <div class="j-tags">
+          <span class="j-tag">AI resume in minutes</span>
+          <span class="j-tag">Skill gap report</span>
+          <span class="j-tag">Matched company list</span>
+        </div>
+      </div>
+    </div>
+    <div class="journey-step">
+      <div class="j-num jn3">3</div>
+      <div class="j-content">
+        <h3>Apply with precision</h3>
+        <p>Apply only to companies that are actively hiring your exact profile. Each application uses a tailored resume. No more scattershot applying — every send is a real shot.</p>
+        <div class="j-tags">
+          <span class="j-tag">One-click apply</span>
+          <span class="j-tag">Tailored per company</span>
+          <span class="j-tag">Match score shown</span>
+        </div>
+      </div>
+    </div>
+    <div class="journey-step">
+      <div class="j-num jn4">4</div>
+      <div class="j-content">
+        <h3>Track, learn, and improve</h3>
+        <p>See every application, every status update, and every rejection reason. HireTrue tells you what to improve after every no — so each cycle makes you a stronger candidate.</p>
+        <div class="j-tags">
+          <span class="j-tag">Full application tracker</span>
+          <span class="j-tag">Rejection reasons</span>
+          <span class="j-tag">Weekly progress report</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="compare" id="compare">
+  <div class="compare-header">
+    <p class="sec-eyebrow" style="color:var(--orange)">Why HireTrue</p>
+    <h2 class="sec-title" style="color:var(--navy)">What others don't do</h2>
+  </div>
+  <div class="compare-table">
+    <div class="ct-head">
+      <div class="ct-head-cell">Feature</div>
+      <div class="ct-head-cell ct-head-hiretrue">HireTrue</div>
+      <div class="ct-head-cell">Naukri / LinkedIn</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-feature">Career Health Score</div>
+      <div class="ct-cell ct-yes">✓</div>
+      <div class="ct-cell ct-no">✗</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-feature">AI Resume Builder (ATS-optimised)</div>
+      <div class="ct-cell ct-yes">✓</div>
+      <div class="ct-cell ct-partial">Partial</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-feature">Rejection reason per application</div>
+      <div class="ct-cell ct-yes">✓</div>
+      <div class="ct-cell ct-no">✗</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-feature">Precision matching (only apply where you qualify)</div>
+      <div class="ct-cell ct-yes">✓</div>
+      <div class="ct-cell ct-no">✗</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-feature">Skill gap report vs target role</div>
+      <div class="ct-cell ct-yes">✓</div>
+      <div class="ct-cell ct-no">✗</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-feature">Dream Company prep mode</div>
+      <div class="ct-cell ct-yes">✓</div>
+      <div class="ct-cell ct-no">✗</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-feature">Job listings</div>
+      <div class="ct-cell ct-yes">✓</div>
+      <div class="ct-cell ct-yes">✓</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="test-header">
+    <p class="sec-eyebrow" style="color:var(--orange)">Real stories</p>
+    <h2 class="sec-title" style="color:var(--navy)">People who stopped guessing</h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p class="test-quote">"I'd applied to 80+ companies in 4 months. HireTrue showed me in 10 minutes that my resume was the problem. Fixed it that day. Got 3 interview calls in 2 weeks."</p>
+      <div class="test-author">
+        <div class="test-avatar" style="background:var(--blue-pale);color:var(--blue)">AR</div>
+        <div>
+          <div class="test-name">Arjun Rao</div>
+          <div class="test-role">Software Engineer · Bengaluru</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p class="test-quote">"The skill gap report was honest in a way no one else had been. I didn't know SQL was blocking me from product roles. Learned it in 3 weeks. Got hired at a Series B startup."</p>
+      <div class="test-author">
+        <div class="test-avatar" style="background:var(--orange-pale);color:var(--orange)">PS</div>
+        <div>
+          <div class="test-name">Priya Sharma</div>
+          <div class="test-role">Product Manager · Delhi</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p class="test-quote">"Dream Company Mode for Flipkart changed everything. 4-month plan, weekly milestones, mock interviews. Got the call last month. First time in my career I felt truly prepared."</p>
+      <div class="test-author">
+        <div class="test-avatar" style="background:var(--success-pale);color:var(--success)">RK</div>
+        <div>
+          <div class="test-name">Rohit Kumar</div>
+          <div class="test-role">Business Analyst · Mumbai</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="cta">
+  <div class="cta-glow"></div>
+  <div style="position:relative;z-index:1">
+    <p class="sec-eyebrow" style="color:var(--orange-light)">Free to join</p>
+    <h2 class="sec-title">Your career clarity starts today.</h2>
+    <p class="sec-sub" style="max-width:500px;font-size:17px">Join thousands of professionals who stopped guessing and started getting hired. No credit card. No spam.</p>
+    <div class="cta-form">
+      <input class="cta-input" type="email" placeholder="Enter your email address">
+      <button class="btn-orange">Get early access</button>
+    </div>
+    <p class="cta-note">Free forever for job seekers &nbsp;&bull;&nbsp; Takes 30 seconds &nbsp;&bull;&nbsp; Cancel anytime</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="#">Hire<em>True</em></a>
+        <p>The career engine that finds the real gap between you and your next job — then closes it.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#">Career Score</a>
+        <a href="#">Resume Builder</a>
+        <a href="#">Job Matching</a>
+        <a href="#">Skill Roadmap</a>
+        <a href="#">Dream Company Mode</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About us</a>
+        <a href="#">Blog</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 HireTrue. Built to fix hiring, not just list jobs.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+  });
+});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){
+      en.target.style.opacity='1';
+      en.target.style.transform='translateY(0)';
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.feat-card,.prob-card,.test-card,.journey-step').forEach(el=>{
+  el.style.opacity='0';
+  el.style.transform='translateY(20px)';
+  el.style.transition='opacity 0.5s ease, transform 0.5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
